@@ -4,11 +4,24 @@ import { DropdownFields } from './form-dropdown';
 import { FormBase } from './form-base';
 import { TextboxFields } from './form-textbox';
 import { RadioFields } from './form-radio';
+import { CheckboxFields } from './form-checkox';
+
 @Injectable()
 export class FormService {
   // TODO: get from a remote source of field metadata
   getFields() {
     const fields: FormBase<string>[] = [
+      new CheckboxFields({
+        key: 'firstName',
+        label: 'First name',
+        value: 'Test Name',
+        required: true,
+        order: 0,
+        options: [
+          { value: 'male', text: 'Male' },
+          { value: 'female', text: 'Female' },
+        ],
+      }),
       new DropdownFields({
         key: 'brave',
         label: 'Bravery Rating',
@@ -28,7 +41,7 @@ export class FormService {
         required: true,
         options: [
           { value: 'male', text: 'Male' },
-          { value: 'female', text: 'Female' }
+          { value: 'female', text: 'Female' },
         ],
         value: 'male',
         order: 4,

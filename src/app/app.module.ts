@@ -10,6 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   imports: [
@@ -20,12 +21,16 @@ import { MatRadioModule } from '@angular/material/radio';
     MatInputModule,
     MatFormFieldModule,
     MatSelectModule,
-    MatRadioModule
+    MatRadioModule,
+    MatCheckboxModule,
   ],
-  declarations: [AppComponent, DynamicFormComponent, DynamicFormFieldsComponent],
-  bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    DynamicFormComponent,
+    DynamicFormFieldsComponent,
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule {
-  constructor() {
-  }
+  constructor() {}
 }
