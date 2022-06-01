@@ -1,10 +1,24 @@
 import { Component } from '@angular/core';
 
+import { FormService } from './form.service';
+import { FormBase } from './form-base';
+import { Observable } from 'rxjs';
+
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.sass']
+  template: `
+    <div>
+      <h2>Form Schema</h2>
+      <app-dynamic-form [fields]="fields$ | async"></app-dynamic-form>
+    </div>
+  `,
+  styleUrls: ['./app.component.sass'],
+  providers: [FormService],
 })
 export class AppComponent {
-  title = 'angular-schema';
+  fields$: Observable<FormBase<any>[]>;
+
+  constructor(service: FormService) {
+    this.fields$ = service.getFields();
+  }
 }
