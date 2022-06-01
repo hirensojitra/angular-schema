@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
       <app-dynamic-form [fields]="fields$ | async"></app-dynamic-form>
     </div>
   `,
-  styleUrls: ['./app.component.sass'],
+  styleUrls: ['./app.component.scss'],
   providers: [FormService],
 })
 export class AppComponent {
