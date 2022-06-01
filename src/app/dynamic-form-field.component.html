@@ -42,13 +42,13 @@
       </mat-radio-group>
     </div>
     <div *ngSwitchCase="'checkbox'">
-      <mat-label>{{ field.label }}</mat-label>
       <mat-checkbox
-        *ngFor="let opt of field.options"
-        [value]="opt.value"
+        [checked]="field.value"
         class="mr-15"
-        >{{ opt.text }}
-      </mat-checkbox>
+        [id]="field.key"
+        [formControlName]="field.key"
+        >{{ field.label }}</mat-checkbox
+      >
     </div>
   </div>
 </div>

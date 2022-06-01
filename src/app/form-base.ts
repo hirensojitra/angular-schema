@@ -1,5 +1,5 @@
 export class FormBase<T> {
-  value: T | boolean | undefined;
+  value: T | string | undefined | boolean;
   key: string;
   label: string;
   required: boolean;
