@@ -47,7 +47,11 @@
         class="mr-15"
         [id]="field.key"
         [formControlName]="field.key"
-        >{{ field.label }}</mat-checkbox
+        (change)="checkBoxvalue($event)" aria-required="true"
+        >{{ field.label }}
+        <mat-error class="errorMessage" *ngIf="!isValid && touched"
+          >{{ field.label }} is required</mat-error
+        ></mat-checkbox
       >
     </div>
   </div>
