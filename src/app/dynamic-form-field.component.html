@@ -2,7 +2,7 @@
   <div [ngSwitch]="field.controlType">
     <mat-form-field appearance="fill" *ngSwitchCase="'textbox'">
       <mat-label>{{ field.label }}</mat-label>
-      <input matInput [formControlName]="field.key" [id]="field.key" matInput />
+      <input matInput [formControlName]="field.key" [id]="field.key" />
       <mat-error class="errorMessage" *ngIf="!isValid && touched"
         >{{ field.label }} is required</mat-error
       >
@@ -43,15 +43,11 @@
     </div>
     <div *ngSwitchCase="'checkbox'">
       <mat-checkbox
-        [checked]="field.value"
         class="mr-15"
         [id]="field.key"
         [formControlName]="field.key"
-        (change)="checkBoxvalue($event)" aria-required="true"
-        >{{ field.label }}
-        <mat-error class="errorMessage" *ngIf="!isValid && touched"
-          >{{ field.label }} is required</mat-error
-        ></mat-checkbox
+        [required]="field.required">{{ field.label }} <small class="errorMessage" *ngIf="!isValid && touched"
+          >{{ field.label }} is required</small></mat-checkbox
       >
     </div>
   </div>

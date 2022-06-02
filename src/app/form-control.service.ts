@@ -11,6 +11,7 @@ export class FieldsControlService {
     const group: any = {};
 
     fields.forEach(field => {
+      console.log(field.required)
       group[field.key] = field.required ? new FormControl(field.value || '', Validators.required)
         : new FormControl(field.value || '');
     });

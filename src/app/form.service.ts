@@ -14,7 +14,7 @@ export class FormService {
       new CheckboxFields({
         key: 'condition',
         label: 'Accept Privacy Policy',
-        value: undefined,
+        value: '',
         required: true,
         order: 4,
       }),

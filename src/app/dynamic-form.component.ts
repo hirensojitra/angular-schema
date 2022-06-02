@@ -20,6 +20,6 @@ export class DynamicFormComponent implements OnInit {
     this.form = this.qcs.toFormGroup(this.fields as FormBase<string>[]);
   }
   onSubmit() {
-    this.payLoad = JSON.stringify(this.form.getRawValue());
+    this.payLoad = this.form.valid?JSON.stringify(this.form.getRawValue()):'';
   }
 }

@@ -19,7 +19,6 @@ export class DynamicFormFieldsComponent {
   }
 
   checkBoxvalue(v: MatCheckboxChange) {
-    var t: any = v.checked ? true : undefined;
-    v.checked = t;
+    
   }
 }
