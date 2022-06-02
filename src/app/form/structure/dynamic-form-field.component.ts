@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MatCheckboxChange } from '@angular/material/checkbox/checkbox';
 
-import { FormBase } from './form-base';
+import { FormBase } from '../form-base';
 
 @Component({
   selector: 'app-field',
@@ -17,8 +17,13 @@ export class DynamicFormFieldsComponent {
   get touched() {
     return this.form.controls[this.field.key].touched;
   }
-
-  checkBoxvalue(v: MatCheckboxChange) {
-    
+  depend(v: any, f: any) {
+    var data = [
+      { value: 'AHM', text: 'Ahmedabad' },
+      { value: 'AND', text: 'Anand' },
+      { value: 'AMR', text: 'Amreli' },
+      { value: 'BHV', text: 'Bhavnagar' }];
+      console.log(data)
+    return data
   }
 }

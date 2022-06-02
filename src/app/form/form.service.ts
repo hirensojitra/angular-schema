@@ -10,6 +10,21 @@ import { CheckboxFields } from './form-checkox';
 export class FormService {
   // TODO: get from a remote source of field metadata
   getFields() {
+    var state = [
+      { value: 'GJ', text: 'Gujarat' },
+      { value: 'MH', text: 'Maharashtra' },
+      { value: 'RJ', text: 'Rajasthan' },
+      { value: 'GA', text: 'Goa' },
+    ]
+    var districts = [
+      { value: 'AHM', text: 'Ahmedabad', filter: 'GJ' },
+      { value: 'AND', text: 'Anand', filter: 'GJ' },
+      { value: 'AMR', text: 'Amreli', filter: 'GJ' },
+      { value: 'JPR', text: 'Jaipur', filter: 'RJ' },
+      { value: 'BHV', text: 'Bhavnagar', filter: 'GJ' }]
+    var taluka = [
+      { value: 'AMR', text: 'Amreli', filter: 'AMR' }
+    ]
     const fields: FormBase<string>[] = [
       new CheckboxFields({
         key: 'condition',
@@ -19,17 +34,32 @@ export class FormService {
         order: 4,
       }),
       new DropdownFields({
-        key: 'brave',
-        label: 'Bravery Rating',
+        key: 'state',
+        label: 'State',
         required: true,
-        options: [
-          { value: 'solid', text: 'Solid' },
-          { value: 'great', text: 'Great' },
-          { value: 'good', text: 'Good' },
-          { value: 'unproven', text: 'Unproven' },
-        ],
-        value: 'great',
+        options: state,
+        value: '',
         order: 2,
+      }),
+      new DropdownFields({
+        key: 'district',
+        label: 'District',
+        required: true,
+        // options: eval('districts.' + state.value),
+        options: '',
+        order: 2,
+        depend: 'state',
+        dependValue: districts
+      }),
+      new DropdownFields({
+        key: 'taluka',
+        label: 'Taluka',
+        required: true,
+        options: '',
+        value: '',
+        order: 2,
+        depend: 'district',
+        dependValue: taluka
       }),
       new RadioFields({
         key: 'gender',

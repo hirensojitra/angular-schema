@@ -6,21 +6,23 @@ export class FormBase<T> {
   order: number;
   controlType: string;
   type: string;
-  options: { value: string; text: string }[];
+  options: any;
   blankNext: boolean;
-  constructor(
-    options: {
-      value?: T;
-      key?: string;
-      label?: string;
-      required?: boolean;
-      order?: number;
-      controlType?: string;
-      type?: string;
-      options?: { value: string; text: string }[];
-      blankNext?: boolean;
-    } = {}
-  ) {
+  depend: any;
+  dependValue: any;
+  constructor(options: {
+    value?: T;
+    key?: string;
+    label?: string;
+    required?: boolean;
+    order?: number;
+    controlType?: string;
+    type?: string;
+    options?: any;
+    blankNext?: boolean;
+    depend?: any;
+    dependValue?: any;
+  } = {}) {
     this.value = options.value;
     this.key = options.key || '';
     this.label = options.label || '';
@@ -30,5 +32,7 @@ export class FormBase<T> {
     this.type = options.type || '';
     this.options = options.options || [];
     this.blankNext = options.blankNext || false;
+    this.depend = options.depend
+    this.dependValue = options.dependValue
   }
 }

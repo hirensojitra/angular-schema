@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
-import { FormService } from './form.service';
-import { FormBase } from './form-base';
+import { FormService } from './form/form.service';
+import { FormBase } from './form/form-base';
 import { Observable } from 'rxjs';
 
 @Component({

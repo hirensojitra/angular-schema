@@ -1,8 +1,8 @@
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
-import { FormBase } from './form-base';
-import { FieldsControlService } from './form-control.service';
+import { FormBase } from '../form-base';
+import { FieldsControlService } from '../form-control.service';
 
 @Component({
   selector: 'app-dynamic-form',
