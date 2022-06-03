@@ -15,16 +15,15 @@ export class FormService {
       { value: 'MH', text: 'Maharashtra' },
       { value: 'RJ', text: 'Rajasthan' },
       { value: 'GA', text: 'Goa' },
-    ]
+    ];
     var districts = [
       { value: 'AHM', text: 'Ahmedabad', filter: 'GJ' },
       { value: 'AND', text: 'Anand', filter: 'GJ' },
       { value: 'AMR', text: 'Amreli', filter: 'GJ' },
       { value: 'JPR', text: 'Jaipur', filter: 'RJ' },
-      { value: 'BHV', text: 'Bhavnagar', filter: 'GJ' }]
-    var taluka = [
-      { value: 'AMR', text: 'Amreli', filter: 'AMR' }
-    ]
+      { value: 'BHV', text: 'Bhavnagar', filter: 'GJ' },
+    ];
+    var taluka = [{ value: 'AMR', text: 'Amreli', filter: 'AMR' }];
     const fields: FormBase<string>[] = [
       new CheckboxFields({
         key: 'condition',
@@ -49,7 +48,7 @@ export class FormService {
         options: '',
         order: 2,
         depend: 'state',
-        dependValue: districts
+        dependValue: districts,
       }),
       new DropdownFields({
         key: 'taluka',
@@ -59,7 +58,7 @@ export class FormService {
         value: '',
         order: 2,
         depend: 'district',
-        dependValue: taluka
+        dependValue: taluka,
       }),
       new RadioFields({
         key: 'gender',
