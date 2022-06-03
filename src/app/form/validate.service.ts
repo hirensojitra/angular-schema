@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ValidatorFn, AbstractControl } from '@angular/forms';
+import { ValidatorFn, AbstractControl, AbstractFormGroupDirective } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 
 @Injectable({
@@ -34,7 +34,7 @@ export class ValidationService {
     }
   }
   ConfirmedValidator(controlName: string, matchingControlName: string) {
-    return (formGroup: FormGroup) => {
+    return (formGroup: FormGroup):any => {
       const control = formGroup.controls[controlName];
       const matchingControl = formGroup.controls[matchingControlName];
       console.log('test')
