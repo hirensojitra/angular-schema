@@ -77,12 +77,14 @@ export class FormService {
         value: 'Hiren Sojitra',
         required: true,
         order: 0,
+        validators: ['CheckNumber']
       }),
       new TextboxFields({
         key: 'emailAddress',
         label: 'Email',
         type: 'text',
         order: 1,
+        validators: ['CheckEmail', { 'password': ['emailAddress','firstName'] }]
       }),
     ];
     return of(fields.sort((a, b) => a.order - b.order));

@@ -10,6 +10,7 @@ export class FormBase<T> {
   blankNext: boolean;
   depend: any;
   dependValue: any;
+  validators: any;
   constructor(options: {
     value?: T;
     key?: string;
@@ -22,6 +23,7 @@ export class FormBase<T> {
     blankNext?: boolean;
     depend?: any;
     dependValue?: any;
+    validators?: any;
   } = {}) {
     this.value = options.value;
     this.key = options.key || '';
@@ -34,5 +36,6 @@ export class FormBase<T> {
     this.blankNext = options.blankNext || false;
     this.depend = options.depend
     this.dependValue = options.dependValue
+    this.validators = options.validators || []
   }
 }
