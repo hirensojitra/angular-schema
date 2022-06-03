@@ -17,7 +17,6 @@ import { Observable } from 'rxjs';
 })
 export class AppComponent {
   fields$: Observable<FormBase<any>[]>;
-
   constructor(service: FormService) {
     this.fields$ = service.getFields();
   }

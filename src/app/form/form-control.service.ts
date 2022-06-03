@@ -10,11 +10,9 @@ export class FieldsControlService {
   toFormGroup(fields: FormBase<string>[]) {
     const group: any = {};
     fields.forEach(field => {
-      group[field.key] = field.required ? new FormControl(field.value || '', Validators.required)
-        : new FormControl(field.value || '');
+      group[field.key] = field.required ? new FormControl(field.value || '', Validators.required) : new FormControl(field.value || '');
     });
     var form = new FormGroup(group);
-
     // Search each fields which have dependency value
     fields.filter(element => {
       if (element.depend !== undefined) {
@@ -23,6 +21,7 @@ export class FieldsControlService {
             return e.filter == value
           })
           form.controls[element.key].setValue(undefined)
+          form.controls[element.key].reset
         });
       }
     })
