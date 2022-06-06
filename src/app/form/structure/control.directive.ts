@@ -19,7 +19,7 @@ export class ControlDirective implements OnInit {
     this.fieldsData = this.formData[0];
     var formData: FormBase<string>[] = this.formData[1];
     formData.forEach((currentValue:any, index:number) => {
-      console.log(currentValue)
+      console.log(index)
     });
   }
 }

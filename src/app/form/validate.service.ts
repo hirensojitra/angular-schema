@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ValidatorFn, AbstractControl, AbstractFormGroupDirective } from '@angular/forms';
+import { ValidatorFn, AbstractControl, AbstractFormGroupDirective, FormControl } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 
 @Injectable({
@@ -33,19 +33,167 @@ export class ValidationService {
       return !reg.test(control.value) ? control.errors : null;
     }
   }
-  ConfirmedValidator(controlName: string, matchingControlName: string) {
-    return (formGroup: FormGroup):any => {
-      const control = formGroup.controls[controlName];
-      const matchingControl = formGroup.controls[matchingControlName];
-      console.log('test')
-      if (matchingControl.errors && !matchingControl.errors['confirmedValidator']) {
+  //To Validate Input Match
+  ConfirmedValidator(compare: any): ValidatorFn {
+    return (control: AbstractControl): any => {
+      if (compare.errors && compare.errors['confirmedValidator']) {
         return;
       }
-      if (control.value !== matchingControl.value) {
-        matchingControl.setErrors({ confirmedValidator: true });
+      if (control.value !== compare.value) {
+        control.setErrors({ confirmedValidator: true });
         return control.errors
       } else {
-        matchingControl.setErrors(null);
+        control.setErrors(null);
+        return null
+      }
+    }
+  }
+  // To Validate Minimum Character : n
+  minCharacter(n: number): ValidatorFn {
+    return (control: AbstractControl): any => {
+      let v = "/^.{" + n + ",}$/"
+      let reg = new RegExp(eval(v));
+      if (!reg.test(control.value)) {
+        control.setErrors({ minCharacter: n });
+        return control.errors
+      } else {
+        control.setErrors(control.errors)
+        control.reset
+        return null
+      }
+    }
+  }
+  // To Validate Maximum Character : n
+  maxCharacter(n: number): ValidatorFn {
+    return (control: AbstractControl): any => {
+      let v = "/^.{0," + n + "}$/"
+      let reg = new RegExp(eval(v));
+      if (!reg.test(control.value)) {
+        control.setErrors({ maxCharacter: n });
+        return control.errors
+      } else {
+        control.setErrors(control.errors)
+        control.reset
+        return null
+      }
+    }
+  }
+  // To Validate Minimum Lower Character : n
+  minLowerCharacter(n: number): ValidatorFn {
+    return (control: AbstractControl): any => {
+      let v = "/^(?=.*?[a-z]).{" + n + ",}$/"
+      let reg = new RegExp(eval(v));
+      if (!reg.test(control.value)) {
+        control.setErrors({ minLowerCharacter: n });
+        return control.errors
+      } else {
+        control.setErrors(control.errors)
+        control.reset
+        return null
+      }
+    }
+  }
+  // To Validate Maximum Lower Character : n
+  maxLowerCharacter(n: number): ValidatorFn {
+    return (control: AbstractControl): any => {
+      let v = "/^(?=.*?[a-z]).{0," + n + "}$/"
+      let reg = new RegExp(eval(v));
+      if (!reg.test(control.value)) {
+        control.setErrors({ maxLowerCharacter: n });
+        return control.errors
+      } else {
+        control.setErrors(control.errors)
+        control.reset
+        return null
+      }
+    }
+  }
+  // To Validate Minimum Upper Character : n
+  minUpperCharacter(n: number): ValidatorFn {
+    return (control: AbstractControl): any => {
+      let v = "/^(?=.*?[A-Z]).{" + n + ",}$/"
+      let reg = new RegExp(eval(v));
+      if (!reg.test(control.value)) {
+        control.setErrors({ minUpperCharacter: n });
+        return control.errors
+      } else {
+        control.setErrors(control.errors)
+        control.reset
+        return null
+      }
+    }
+  }
+  // To Validate Maximum Lower Character : n
+  maxUpperCharacter(n: number): ValidatorFn {
+    return (control: AbstractControl): any => {
+      let v = "/^(?=.*?[A-Z]).{0," + n + "}$/"
+      let reg = new RegExp(eval(v));
+      if (!reg.test(control.value)) {
+        control.setErrors({ maxUpperCharacter: n });
+        return control.errors
+      } else {
+        control.setErrors(control.errors)
+        control.reset
+        return null
+      }
+    }
+  }
+  // To Validate Minimum Special Character : n
+  minSpecialCharacter(n: number): ValidatorFn {
+    return (control: AbstractControl): any => {
+      let v = "/^(?=.*?[@$!%*#?&]).{" + n + ",}$/"
+      let reg = new RegExp(eval(v));
+      if (!reg.test(control.value)) {
+        control.setErrors({ minSpecialCharacter: n });
+        return control.errors
+      } else {
+        control.setErrors(control.errors)
+        control.reset
+        return null
+      }
+    }
+  }
+  // To Validate Maximum Special Character : n
+  maxSpecialCharacter(n: number): ValidatorFn {
+    return (control: AbstractControl): any => {
+      let v = "/^(?=.*?[@$!%*#?&]).{0," + n + "}$/"
+      let reg = new RegExp(eval(v));
+      if (!reg.test(control.value)) {
+        control.setErrors({ maxSpecialCharacter: n });
+        return control.errors
+      } else {
+        control.setErrors(control.errors)
+        control.reset
+        return null
+      }
+    }
+  }
+  // To Validate Minimum Digit : n
+  minDigitCharacter(n: number): ValidatorFn {
+    return (control: AbstractControl): any => {
+      let v = "/^(?=.*?[0-9]).{" + n + ",}$/"
+      let reg = new RegExp(eval(v));
+      if (!reg.test(control.value)) {
+        control.setErrors({ minDigitCharacter: n });
+        return control.errors
+      } else {
+        control.setErrors(control.errors)
+        control.reset
+        return null
+      }
+    }
+  }
+  // To Validate Maximum Special Character : n
+  maxDigitCharacter(n: number): ValidatorFn {
+    return (control: AbstractControl): any => {
+      let v = "/^(?=.*?[0-9]).{0,2}$/"
+      let reg = new RegExp(eval(v));
+      if (!reg.test(control.value)) {
+        control.setErrors({ 'maxDigitCharacter': n });
+        return control.errors
+      } else {
+        control.setErrors(control.errors)
+        control.reset
         return null
       }
     }

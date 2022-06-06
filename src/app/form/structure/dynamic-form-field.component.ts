@@ -23,7 +23,6 @@ export class DynamicFormFieldsComponent {
       { value: 'AND', text: 'Anand' },
       { value: 'AMR', text: 'Amreli' },
       { value: 'BHV', text: 'Bhavnagar' }];
-      console.log(data)
     return data
   }
 }

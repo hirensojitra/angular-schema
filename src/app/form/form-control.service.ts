@@ -32,11 +32,45 @@ export class FieldsControlService {
               break;
             case 'object':
               Object.keys(v).forEach(key => {
+                console.log(key)
                 switch (key) {
-                  case 'password':
-                    console.log((v.password[0], v.password[1]))
-
-                  // form.controls[element.key].addValidators([this.val.ConfirmedValidator(v.password[0], v.password[1])])
+                  case 'match':
+                    if (v.match) {
+                      form.controls[v.match].valueChanges.subscribe((value: any) => {
+                        form.controls[element.key].setValue(form.controls[element.key].value)
+                      })
+                    }
+                    (v.match) ? form.controls[element.key].addValidators([this.val.ConfirmedValidator(form.controls[v.match])]) : null
+                    break;
+                  case 'minCharacter':
+                    (v.minCharacter) ? form.controls[element.key].addValidators([this.val.minCharacter(v[key])]) : null
+                    break;
+                  case 'maxCharacter':
+                    (v.maxCharacter) ? form.controls[element.key].addValidators([this.val.maxCharacter(v[key])]) : null
+                    break;
+                  case 'minLowerCharacter':
+                    (v.minLowerCharacter) ? form.controls[element.key].addValidators([this.val.minLowerCharacter(v[key])]) : null
+                    break;
+                  case 'maxLowerCharacter':
+                    (v.maxLowerCharacter) ? form.controls[element.key].addValidators([this.val.maxLowerCharacter(v[key])]) : null
+                    break;
+                  case 'minUpperCharacter':
+                    (v.minUpperCharacter) ? form.controls[element.key].addValidators([this.val.minUpperCharacter(v[key])]) : null
+                    break;
+                  case 'maxUpperCharacter':
+                    (v.maxUpperCharacter) ? form.controls[element.key].addValidators([this.val.maxUpperCharacter(v[key])]) : null
+                    break;
+                  case 'minSpecialCharacter':
+                    (v.minSpecialCharacter) ? form.controls[element.key].addValidators([this.val.minSpecialCharacter(v[key])]) : null
+                    break;
+                  case 'maxSpecialCharacter':
+                    (v.maxSpecialCharacter) ? form.controls[element.key].addValidators([this.val.maxSpecialCharacter(v[key])]) : null
+                    break;
+                  case 'minDigitCharacter':
+                    (v.minDigitCharacter) ? form.controls[element.key].addValidators([this.val.minDigitCharacter(v[key])]) : null
+                    break;
+                  case 'maxDigitCharacter':
+                    (v.maxDigitCharacter) ? form.controls[element.key].addValidators([this.val.maxDigitCharacter(v[key])]) : null
                     break;
                   default:
                     break;
