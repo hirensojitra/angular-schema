@@ -2,8 +2,8 @@
   <div [ngSwitch]="field.controlType">
     <mat-form-field appearance="fill" *ngSwitchCase="'textbox'">
       <mat-label>{{ field.label }}</mat-label>
-      <input matInput [formControlName]="field.key" [id]="field.key" />{{ form.controls[field.key].errors | json}}
-      <mat-error class="errorMessage" *ngIf="!isValid && touched"> is required</mat-error>
+      <input matInput [formControlName]="field.key" [id]="field.key" [type]="field.type" />
+      <mat-error class="errorMessage" *ngIf="!isValid && touched">{{ errorMsg(field.label,form.controls[field.key].errors)}}</mat-error>
     </mat-form-field>
     <mat-form-field appearance="fill" *ngSwitchCase="'dropdown'">
       <mat-label>{{ field.label }}</mat-label>

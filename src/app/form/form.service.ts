@@ -153,16 +153,23 @@ export class FormService {
       new TextboxFields({
         key: 'firstName',
         label: 'First name',
-        value: 'Hiren Sojitra',
+        value: '',
         required: true,
         order: 0,
-        validators: ['CheckNumber']
+      }),
+      new TextboxFields({
+        key: 'lastName',
+        label: 'Last name',
+        value: '',
+        required: true,
+        order: 0,
       }),
       new TextboxFields({
         key: 'emailAddress',
         label: 'Email',
         type: 'text',
         order: 1,
+        required: true,
         validators: ['CheckEmail']
       }),
       new TextboxFields({
@@ -171,7 +178,19 @@ export class FormService {
         type: 'password',
         order: 1,
         required: true,
-        value: 'aA@1'
+        value: 'aA@1',
+        validators: [
+          { 'minCharacter': 3 },
+          { 'maxCharacter': 15 },
+          { 'minLowerCharacter': 1 },
+          // { 'maxLowerCharacter': 2 },
+          { 'minUpperCharacter': 1 },
+          // { 'maxUpperCharacter': 2 },
+          { 'minSpecialCharacter': 1 },
+          // { 'maxSpecialCharacter': 2 },
+          { 'minDigitCharacter': 1 },
+          // { 'maxDigitCharacter': 2 }
+        ]
       }),
       new TextboxFields({
         key: 'confirmPassword',
@@ -180,17 +199,7 @@ export class FormService {
         order: 1,
         value: 'aA@1',
         validators: [
-          // { 'match': 'password' },
-          // { 'minCharacter': 3 },
-          // { 'maxCharacter': 15 },
-          // { 'minLowerCharacter': 1 },
-          // { 'maxLowerCharacter': 2 },
-          // { 'minUpperCharacter': 1 },
-          // { 'maxUpperCharacter': 2 },
-          // { 'minSpecialCharacter': 1 },
-          // { 'maxSpecialCharacter': 2 },
-          // { 'minDigitCharacter': 1 },
-          { 'maxDigitCharacter': 2 }
+          { 'match': 'password' }
         ]
       }),
     ];

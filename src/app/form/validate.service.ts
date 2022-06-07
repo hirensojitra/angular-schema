@@ -34,13 +34,13 @@ export class ValidationService {
     }
   }
   //To Validate Input Match
-  ConfirmedValidator(compare: any): ValidatorFn {
+  ConfirmedValidator(compare: any,label:string): ValidatorFn {
     return (control: AbstractControl): any => {
       if (compare.errors && compare.errors['confirmedValidator']) {
         return;
       }
       if (control.value !== compare.value) {
-        control.setErrors({ confirmedValidator: true });
+        control.setErrors({ confirmedValidator: label });
         return control.errors
       } else {
         control.setErrors(null);
@@ -96,7 +96,7 @@ export class ValidationService {
   // To Validate Maximum Lower Character : n
   maxLowerCharacter(n: number): ValidatorFn {
     return (control: AbstractControl): any => {
-      let v = "/^(?=.*?[a-z]).{0," + n + "}$/"
+      let v = "/^(?!(?:[^a-z]*[a-z]){"+(n+1)+"})[\\d\\D]*$/"
       let reg = new RegExp(eval(v));
       if (!reg.test(control.value)) {
         control.setErrors({ maxLowerCharacter: n });
@@ -126,7 +126,7 @@ export class ValidationService {
   // To Validate Maximum Lower Character : n
   maxUpperCharacter(n: number): ValidatorFn {
     return (control: AbstractControl): any => {
-      let v = "/^(?=.*?[A-Z]).{0," + n + "}$/"
+      let v = "/^(?!(?:[^A-Z]*[A-Z]){"+(n+1)+"})[\\d\\D]*$/"
       let reg = new RegExp(eval(v));
       if (!reg.test(control.value)) {
         control.setErrors({ maxUpperCharacter: n });
@@ -156,7 +156,7 @@ export class ValidationService {
   // To Validate Maximum Special Character : n
   maxSpecialCharacter(n: number): ValidatorFn {
     return (control: AbstractControl): any => {
-      let v = "/^(?=.*?[@$!%*#?&]).{0," + n + "}$/"
+      let v = "/^(?!(?:[^@$!%*#?&]*[@$!%*#?&]){"+(n+1)+"})[\\d\\D]*$/"
       let reg = new RegExp(eval(v));
       if (!reg.test(control.value)) {
         control.setErrors({ maxSpecialCharacter: n });
@@ -186,7 +186,8 @@ export class ValidationService {
   // To Validate Maximum Special Character : n
   maxDigitCharacter(n: number): ValidatorFn {
     return (control: AbstractControl): any => {
-      let v = "/^(?=.*?[0-9]).{0,2}$/"
+      let v = "/^(?!(?:[^0-9]*[0-9]){"+(n+1)+"})[\\d\\D]*$/"
+      console.log(v)
       let reg = new RegExp(eval(v));
       if (!reg.test(control.value)) {
         control.setErrors({ 'maxDigitCharacter': n });

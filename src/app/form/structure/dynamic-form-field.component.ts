@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { MatCheckboxChange } from '@angular/material/checkbox/checkbox';
 
 import { FormBase } from '../form-base';
+import { FieldsControlService } from '../form-control.service';
 
 @Component({
   selector: 'app-field',
@@ -11,6 +12,7 @@ import { FormBase } from '../form-base';
 export class DynamicFormFieldsComponent {
   @Input() field!: FormBase<string>;
   @Input() form!: FormGroup;
+  constructor(private qcs: FieldsControlService){}
   get isValid() {
     return this.form.controls[this.field.key].valid;
   }
@@ -24,5 +26,8 @@ export class DynamicFormFieldsComponent {
       { value: 'AMR', text: 'Amreli' },
       { value: 'BHV', text: 'Bhavnagar' }];
     return data
+  }
+  errorMsg(l:any, error:any){
+    return this.qcs.errorMsg(l,error)
   }
 }
