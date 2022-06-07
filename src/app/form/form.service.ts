@@ -45,7 +45,7 @@ export class FormService {
       { value: 'LK', text: 'Ladakh' },
       { value: 'LD', text: 'Lakshadweep' },
       { value: 'DL', text: 'Delhi' },
-      { value: 'PU', text: 'Puducherry' }
+      { value: 'PU', text: 'Puducherry' },
     ];
     var districts = [
       { value: 'AHM', text: 'Ahmedabad', filter: 'GJ' },
@@ -80,7 +80,7 @@ export class FormService {
       { value: 'SNG', text: 'Surendranagar', filter: 'GJ' },
       { value: 'TAP', text: 'Tapi (Vyara)', filter: 'GJ' },
       { value: 'VDR', text: 'Vadodara', filter: 'GJ' },
-      { value: 'VSD', text: 'Valsad', filter: 'GJ' }
+      { value: 'VSD', text: 'Valsad', filter: 'GJ' },
     ];
     var taluka = [
       { value: 'AMR', text: 'Amreli', filter: 'AMR' },
@@ -101,7 +101,7 @@ export class FormService {
       { value: 'DSK', text: 'Daskroi', filter: 'AHM' },
       { value: 'DHL', text: 'Dholka', filter: 'AHM' },
       { value: 'BVL', text: 'Bavla', filter: 'AHM' },
-      { value: 'DND', text: 'Dhandhuka', filter: 'AHM' }
+      { value: 'DND', text: 'Dhandhuka', filter: 'AHM' },
     ];
     const fields: FormBase<string>[] = [
       new CheckboxFields({
@@ -170,7 +170,7 @@ export class FormService {
         type: 'text',
         order: 1,
         required: true,
-        validators: ['CheckEmail']
+        validators: ['CheckEmail'],
       }),
       new TextboxFields({
         key: 'password',
@@ -178,29 +178,27 @@ export class FormService {
         type: 'password',
         order: 1,
         required: true,
-        value: 'aA@1',
+        value: '',
         validators: [
-          { 'minCharacter': 3 },
-          { 'maxCharacter': 15 },
-          { 'minLowerCharacter': 1 },
+          { minCharacter: 3 },
+          { maxCharacter: 15 },
+          { minLowerCharacter: 1 },
           // { 'maxLowerCharacter': 2 },
-          { 'minUpperCharacter': 1 },
+          { minUpperCharacter: 1 },
           // { 'maxUpperCharacter': 2 },
-          { 'minSpecialCharacter': 1 },
+          { minSpecialCharacter: 1 },
           // { 'maxSpecialCharacter': 2 },
-          { 'minDigitCharacter': 1 },
+          { minDigitCharacter: 1 },
           // { 'maxDigitCharacter': 2 }
-        ]
+        ],
       }),
       new TextboxFields({
         key: 'confirmPassword',
         label: 'Confirm Password',
         type: 'password',
         order: 1,
-        value: 'aA@1',
-        validators: [
-          { 'match': 'password' }
-        ]
+        value: '',
+        validators: [{ match: 'password' }],
       }),
     ];
     return of(fields.sort((a, b) => a.order - b.order));
