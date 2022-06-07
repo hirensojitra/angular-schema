@@ -8,7 +8,6 @@ import { CheckboxFields } from './form-checkox';
 
 @Injectable()
 export class FormService {
-  // TODO: get from a remote source of field metadata
   getFields() {
     var state = [
       { value: 'AP', text: 'Andhra Pradesh' },
@@ -146,6 +145,7 @@ export class FormService {
         options: [
           { value: 'male', text: 'Male' },
           { value: 'female', text: 'Female' },
+          { value: 'other', text: 'Other' },
         ],
         value: 'male',
         order: 3,
