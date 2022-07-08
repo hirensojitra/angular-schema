@@ -5,6 +5,7 @@ import { FormBase } from './form-base';
 import { TextboxFields } from './form-textbox';
 import { RadioFields } from './form-radio';
 import { CheckboxFields } from './form-checkox';
+import { FileFields } from './form-file';
 
 @Injectable()
 export class FormService {
@@ -103,6 +104,13 @@ export class FormService {
       { value: 'DND', text: 'Dhandhuka', filter: 'AHM' },
     ];
     const fields: FormBase<string>[] = [
+      new FileFields({
+        key: 'profileImg',
+        label: 'Profile Picture',
+        value: '',
+        required: true,
+        order: 4,
+      }),
       new CheckboxFields({
         key: 'condition',
         label: 'Accept Privacy Policy',

@@ -30,4 +30,21 @@ export class DynamicFormFieldsComponent {
   errorMsg(l:any, error:any){
     return this.qcs.errorMsg(l,error)
   }
+  fileClick(id:string){
+    const inputNode: any = document.querySelector('#'+id);
+    inputNode.click()
+  }
+  onFileSelected(id:string) {
+    const inputNode: any = document.querySelector('#'+id);
+
+    if (typeof (FileReader) !== 'undefined') {
+      const reader = new FileReader();
+
+      reader.onload = (e: any) => {
+        // this.srcResult = e.target.result;
+      };
+
+      reader.readAsArrayBuffer(inputNode.files[0]);
+    }
+  }
 }

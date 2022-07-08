@@ -1,9 +1,19 @@
 <div [formGroup]="form">
   <div [ngSwitch]="field.controlType">
+    <mat-form-field *ngSwitchCase="'file'">
+      <mat-label>{{ field.label }}</mat-label>
+      <button type="button" mat-raised-button (click)="fileClick(field.key)">Choose File</button>
+      <input type="text" matInput [formControlName]="field.key" hidden>
+      <input hidden (change)="onFileSelected(field.key)" type="file" [id]="field.key">
+      <mat-error class="errorMessage" *ngIf="!isValid && touched">
+        {{ errorMsg(field.label,form.controls[field.key].errors)}}
+      </mat-error>
+    </mat-form-field>
     <mat-form-field appearance="fill" *ngSwitchCase="'textbox'">
       <mat-label>{{ field.label }}</mat-label>
       <input matInput [formControlName]="field.key" [id]="field.key" [type]="field.type" />
-      <mat-error class="errorMessage" *ngIf="!isValid && touched">{{ errorMsg(field.label,form.controls[field.key].errors)}}</mat-error>
+      <mat-error class="errorMessage" *ngIf="!isValid && touched">
+        {{ errorMsg(field.label,form.controls[field.key].errors)}}</mat-error>
     </mat-form-field>
     <mat-form-field appearance="fill" *ngSwitchCase="'dropdown'">
       <mat-label>{{ field.label }}</mat-label>
