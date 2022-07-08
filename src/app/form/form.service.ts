@@ -6,7 +6,7 @@ import { TextboxFields } from './form-textbox';
 import { RadioFields } from './form-radio';
 import { CheckboxFields } from './form-checkox';
 import { FileFields } from './form-file';
-
+import { TextareaFields } from './form-textarea';
 @Injectable()
 export class FormService {
   getFields() {
@@ -117,6 +117,13 @@ export class FormService {
         value: '',
         required: true,
         order: 4,
+      }),
+      new TextareaFields({
+        key: 'address',
+        label: 'Address',
+        value: '',
+        required: true,
+        order: 0,
       }),
       new DropdownFields({
         key: 'state',
